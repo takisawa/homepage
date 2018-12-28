@@ -15,6 +15,6 @@ Dir.glob(File.join(SRC_DIR, '**', '*.html')).each do |path|
   key = path.sub(SRC_DIR, '')
 
   obj = s3.bucket(BUCKET_NAME).object(key)
-  p path
   obj.upload_file(path)
+  STDOUT.puts "#{'%-40s' % path} => #{key}"
 end
